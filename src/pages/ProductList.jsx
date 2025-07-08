@@ -11,7 +11,7 @@ export default function ProductList() {
   }, []);
 
   return (
-    <div >
+    <div className="container mx-auto p-4 grid md:grid-cols-3 gap-4">
       {products.length > 0 && (
         <Carousel products={products} />
       )}
