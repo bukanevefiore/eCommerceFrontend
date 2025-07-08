@@ -49,9 +49,9 @@ export default function ProductCard({ product }) {
           />
         ))}
       </div>
-
+      <h3 className="color-name"> {selectedColor} Gold</h3>
       <p className="product-popularity">
-         {renderStars(product.popularityOutValue)} {product.popularityOutValue}/5
+         {renderStars(product.popularityOutValue)}${product.popularityOutValue}/5
       </p>
     </div>
   );
