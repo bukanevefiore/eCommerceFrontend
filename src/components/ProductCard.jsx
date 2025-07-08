@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { FaStar, FaStarHalfAlt, FaRegStar } from "react-icons/fa";
 import "./ProductCard.css";
 
 const colorMap = {
@@ -6,6 +7,20 @@ const colorMap = {
   white: "#D9D9D9",
   rose: "#E1A4A9",
 };
+
+
+function renderStars(rating) {
+  const full = Math.floor(rating);
+  const half = rating % 1 >= 0.3 && rating % 1 < 1 ? 1 : 0;
+  const empty = 5 - full - half;
+  const stars = [];
+
+  for (let i = 0; i < full; i++) stars.push(<FaStar key={`f${i}`} color="#facc15" />);
+  if (half) stars.push(<FaStarHalfAlt key="half" color="#facc15" />);
+  for (let i = 0; i < empty; i++) stars.push(<FaRegStar key={`e${i}`} color="#facc15" />);
+
+  return <div className="stars">{stars}</div>;
+}
 
 export default function ProductCard({ product }) {
   const [selectedColor, setSelectedColor] = useState("yellow");
@@ -36,7 +51,7 @@ export default function ProductCard({ product }) {
       </div>
 
       <p className="product-popularity">
-        Popularity: {product.popularityOutValue}/5
+         {renderStars(product.popularityOutValue)} {product.popularityOutValue}/5
       </p>
     </div>
   );

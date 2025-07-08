@@ -1,9 +1,10 @@
 import ProductList from "./pages/ProductList";
+import "./App.css" ;
 
 function App() {
   return (
     <div>
-      <h1 style={{ textAlign: "center" }}>Product Listing</h1>
+      <div><h4 className="title">Product List</h4></div>
       <ProductList />
     </div>
   );
