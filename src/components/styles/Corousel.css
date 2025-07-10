@@ -1,0 +1,23 @@
+.carousel-wrapper {
+  width: 100%;
+  padding: 20px 10px;
+  box-sizing: border-box;
+}
+
+.swiper {
+  padding-bottom: 40px; 
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  color: #333;
+}
+
+.swiper-pagination-bullet {
+  background: #999;
+  opacity: 1;
+}
+
+.swiper-pagination-bullet-active {
+  background: #333;
+}

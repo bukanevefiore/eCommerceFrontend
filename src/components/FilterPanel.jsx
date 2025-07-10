@@ -1,56 +1,58 @@
-import { useState } from "react";
+import "./styles/Filter.css";
 
-export default function FilterPanel({ onFilter }) {
-  const [minPrice, setMinPrice] = useState("");
-  const [maxPrice, setMaxPrice] = useState("");
-  const [minPopularity, setMinPopularity] = useState("");
-  const [maxPopularity, setMaxPopularity] = useState("");
-
-  const applyFilter = () => {
-    onFilter({
-      minPrice: minPrice || undefined,
-      maxPrice: maxPrice || undefined,
-      minPopularity: minPopularity || undefined,
-      maxPopularity: maxPopularity || undefined
-    });
-  };
-
+export default function FilterPanel({ filters, onChange, onSubmit }) {
   return (
-    <div className="flex flex-col md:flex-row gap-4 p-4 border rounded shadow mb-4">
-      <input
-        type="number"
-        placeholder="Min Price"
-        value={minPrice}
-        onChange={(e) => setMinPrice(e.target.value)}
-        className="border p-2 rounded w-full md:w-36"
-      />
-      <input
-        type="number"
-        placeholder="Max Price"
-        value={maxPrice}
-        onChange={(e) => setMaxPrice(e.target.value)}
-        className="border p-2 rounded w-full md:w-36"
-      />
-      <input
-        type="number"
-        placeholder="Min Popularity"
-        value={minPopularity}
-        onChange={(e) => setMinPopularity(e.target.value)}
-        className="border p-2 rounded w-full md:w-36"
-      />
-      <input
-        type="number"
-        placeholder="Max Popularity"
-        value={maxPopularity}
-        onChange={(e) => setMaxPopularity(e.target.value)}
-        className="border p-2 rounded w-full md:w-36"
-      />
-      <button
-        onClick={applyFilter}
-        className="bg-black text-white p-2 rounded w-full md:w-auto"
-      >
-        Apply
-      </button>
+    <div className="filter-panel">
+      <h3 className="filter-title">Filter Products</h3>
+      <div className="filter-input-group">
+        <div className="filter-item">
+          <label>Min Price</label>
+          <input
+            type="number"
+            name="minPrice"
+            value={filters.minPrice}
+            onChange={onChange}
+            placeholder="Eg: 500"
+          />
+        </div>
+        <div className="filter-item">
+          <label>Max Price</label>
+          <input
+            type="number"
+            name="maxPrice"
+            value={filters.maxPrice}
+            onChange={onChange}
+            placeholder="Eg: 1000"
+          />
+        </div>
+        <div className="filter-item">
+          <label>Min Popularity</label>
+          <input
+            type="number"
+            name="minPopularity"
+            step="0.1"
+            max="5"
+            value={filters.minPopularity}
+            onChange={onChange}
+            placeholder="Eg: 3"
+          />
+        </div>
+        <div className="filter-item">
+          <label>Max Popülerlik</label>
+          <input
+            type="number"
+            name="maxPopularity"
+            step="0.1"
+            max="5"
+            value={filters.maxPopularity}
+            onChange={onChange}
+            placeholder="Eg: 5"
+          />
+        </div>
+        <div className="filter-button">
+          <button onClick={onSubmit}>Filtrele</button>
+        </div>
+      </div>
     </div>
   );
 }
