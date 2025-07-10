@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { FaStar, FaStarHalfAlt, FaRegStar } from "react-icons/fa";
-import "./ProductCard.css";
+import "./styles/ProductCard.css";
 
 const colorMap = {
   yellow: "#E6CA97",
